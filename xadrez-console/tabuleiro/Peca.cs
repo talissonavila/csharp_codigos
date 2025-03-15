@@ -39,5 +39,10 @@
         {
             quantidadeDeMovimentos++;
         }
+
+        public void decrementarQuantidadeDeMovimentos()
+        {
+            quantidadeDeMovimentos--;
+        }
     }
 }
