@@ -12,25 +12,38 @@ namespace xadrez_console
                 PartidaDeXadrez partida = new PartidaDeXadrez();
                 while (!partida.isPartidaTerminada)
                 {
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tabuleiro);
+                    try
+                    {
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tabuleiro);
+                        Console.WriteLine();
+                        Console.WriteLine("Turno: " + partida.turno);
+                        Console.WriteLine("Aguardando jogador: " + partida.jogadorAtual);
+                        Console.WriteLine();
 
-                    Console.WriteLine();
+                        Console.Write("Posição de Origem: ");
+                        Posicao posicaoOrigem = Tela.lerPosicaoXadrez().toPosicao();
 
-                    Console.Write("Posição de Origem: ");
-                    Posicao posicaoOrigem = Tela.lerPosicaoXadrez().toPosicao();
-
-                    bool[,] posicoesPossiveis = partida.tabuleiro.peca(posicaoOrigem).movimentosPossiveis();
+                        partida.validarPosicaoOrigem(posicaoOrigem);
                     
-                    Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
+                        bool[,] posicoesPossiveis = partida.tabuleiro.peca(posicaoOrigem).movimentosPossiveis();
                     
-                    Console.WriteLine();
-                    Console.Write("Posição de Destino: ");
-                    Posicao posicaoDestino = Tela.lerPosicaoXadrez().toPosicao();
+                        Console.Clear();
+                        Tela.imprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
+                    
+                        Console.WriteLine();
+                        Console.Write("Posição de Destino: ");
+                        Posicao posicaoDestino = Tela.lerPosicaoXadrez().toPosicao();
 
-                    partida.exececutaMovimento(posicaoOrigem, posicaoDestino);
-
+                        partida.validarPosicaoDestino(posicaoOrigem, posicaoDestino);
+                        
+                        partida.realizaJogada(posicaoOrigem, posicaoDestino);
+                    }
+                    catch (Exception exc)
+                    {
+                        Console.WriteLine(exc.Message);
+                        Console.ReadLine();
+                    }
                 }
                 Console.ReadLine();
             } catch (TabuleiroException exc)
