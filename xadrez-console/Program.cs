@@ -19,6 +19,13 @@ namespace xadrez_console
 
                     Console.Write("Posição de Origem: ");
                     Posicao posicaoOrigem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    bool[,] posicoesPossiveis = partida.tabuleiro.peca(posicaoOrigem).movimentosPossiveis();
+                    
+                    Console.Clear();
+                    Tela.imprimirTabuleiro(partida.tabuleiro, posicoesPossiveis);
+                    
+                    Console.WriteLine();
                     Console.Write("Posição de Destino: ");
                     Posicao posicaoDestino = Tela.lerPosicaoXadrez().toPosicao();
 
