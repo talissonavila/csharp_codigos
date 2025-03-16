@@ -37,18 +37,20 @@ namespace xadrez_console
                         
                         partida.realizaJogada(posicaoOrigem, posicaoDestino);
                     }
-                    catch (Exception exc)
+                    catch (TabuleiroException exc)
                     {
                         Console.WriteLine(exc.Message);
                         Console.ReadLine();
                     }
                 }
-                Console.ReadLine();
-            } catch (TabuleiroException exc)
+                Console.Clear();
+                Tela.imprimirPartida(partida);
+            } 
+            catch (TabuleiroException exc)
             {
                 Console.WriteLine(exc.Message);
             }
-
+            Console.ReadLine();
         }
     }
 }
