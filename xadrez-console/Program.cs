@@ -42,6 +42,16 @@ namespace xadrez_console
                         Console.WriteLine(exc.Message);
                         Console.ReadLine();
                     }
+                    catch (IndexOutOfRangeException)
+                    {
+                        Console.WriteLine("Entrada inválida. Tente novamente");
+                        Console.ReadLine();
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Entrada inválida. Tente novamente");
+                        Console.ReadLine();
+                    }
                 }
                 Console.Clear();
                 Tela.imprimirPartida(partida);
