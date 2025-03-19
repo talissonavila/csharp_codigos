@@ -36,7 +36,8 @@ namespace xadrez
                 }
 
                 posicao_.definirValores(posicao.linha - 2, posicao.coluna);
-                if (tabuleiro.isPosicaoValida(posicao_) && livre(posicao_) && quantidadeDeMovimentos == 0)
+                Posicao p2 = new Posicao(posicao.linha - 1, posicao.coluna);
+                if (tabuleiro.isPosicaoValida(p2) && livre(p2) && tabuleiro.isPosicaoValida(posicao_) && livre(posicao_) && quantidadeDeMovimentos == 0)
                 {
                     matriz[posicao_.linha, posicao_.coluna] = true;
                 }
@@ -44,39 +45,46 @@ namespace xadrez
                 posicao_.definirValores(posicao.linha - 1, posicao.coluna - 1);
                 if (tabuleiro.isPosicaoValida(posicao_) && existeInimigo(posicao_))
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
 
                 posicao_.definirValores(posicao.linha - 1, posicao.coluna + 1);
                 if (tabuleiro.isPosicaoValida(posicao_) && existeInimigo(posicao_))
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
             }
-            else if (cor == Cor.Preta)
+            else
             {
                 posicao_.definirValores(posicao.linha + 1, posicao.coluna);
                 if (tabuleiro.isPosicaoValida(posicao_) && livre(posicao_))
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
 
                 posicao_.definirValores(posicao.linha + 2, posicao.coluna);
-                if (tabuleiro.isPosicaoValida(posicao_) && livre(posicao_) && quantidadeDeMovimentos == 0)
+                Posicao p2 = new Posicao(posicao.linha + 1, posicao.coluna);
+                if (
+                    tabuleiro.isPosicaoValida(p2) 
+                    && livre(p2) 
+                    && tabuleiro.isPosicaoValida(posicao_)
+                    && livre(posicao_) 
+                    && quantidadeDeMovimentos == 0
+                )
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
 
                 posicao_.definirValores(posicao.linha + 1, posicao.coluna - 1);
                 if (tabuleiro.isPosicaoValida(posicao_) && existeInimigo(posicao_))
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
 
                 posicao_.definirValores(posicao.linha + 1, posicao.coluna + 1);
                 if (tabuleiro.isPosicaoValida(posicao_) && existeInimigo(posicao_))
                 {
-                    matriz[posicao_.linha, posicao.coluna] = true;
+                    matriz[posicao_.linha, posicao_.coluna] = true;
                 }
             }
 

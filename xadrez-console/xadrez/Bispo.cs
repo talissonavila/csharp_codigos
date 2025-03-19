@@ -68,7 +68,7 @@ namespace xadrez
                 {
                     break;
                 }
-                posicao.definirValores(posicao_.linha + 1, posicao_.coluna - 1);
+                posicao_.definirValores(posicao_.linha + 1, posicao_.coluna - 1);
             }
 
             return matriz;
